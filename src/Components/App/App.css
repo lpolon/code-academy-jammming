@@ -1,3 +1,14 @@
+body,
+html,
+#root {
+  height: 100%;
+}
+
+html {
+  font-size: 18px;
+}
+
+
 .App {
   background-color: purple;
 }
