@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import Track from '../Track/Track';
+
 export default class App extends Component {
   render() {
-    return null;
+    return (
+      <div className="App">
+        <Track />
+      </div>
+    );
   }
 }
