@@ -4,8 +4,12 @@ import './App.css';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResult from '../SearchResult/SearchResult';
 
+import { Spotify } from '../../util/Spotify';
+
 export default class App extends Component {
   render() {
+    // teste
+    // Spotify.getAccessToken()
     return (
       <div>
         <h1>
