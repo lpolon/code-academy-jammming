@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Track from '../Track/Track';
+import SearchBar from '../SearchBar/SearchBar';
 
 export default class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Track />
+      <div>
+        <h1>
+          Ja
+          <span className="highlight">mmm</span>
+          ing
+        </h1>
+        <div className="App">
+          <div className="App-playlist">
+            <SearchBar />
+            {/* SearchResult */}
+            {/* Playlist */}
+          </div>
+        </div>
       </div>
     );
   }
