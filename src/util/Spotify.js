@@ -6,7 +6,9 @@ import queryString from 'query-string';
 
 // TODO: in an actual deploy, settings in spotify dev dashboard must be updated to redirect somewhere else besides localhost.
 
-import { clientId, redirectUri } from './clientId';
+
+const clientId = '8e119fa686284aab8c64d8d77a50ee3d';
+const redirectUri = 'http://localhost:3000/';
 
 let userAccessToken = '';
 
