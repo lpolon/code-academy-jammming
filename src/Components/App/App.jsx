@@ -16,11 +16,6 @@ export default class App extends Component {
     this.search = this.search.bind(this);
   }
 
-  componentDidMount() {
-    Spotify.getAccessToken(); // TODO: handlesubmmit call this
-    this.search('red');
-  }
-
   async search(searchTerm) {
     const searchResults = await Spotify.search(searchTerm);
     this.setState({
