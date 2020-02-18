@@ -59,8 +59,21 @@ export const Spotify = {
         }
       );
       const resObj = await response.json();
-      console.log(resObj.tracks)
-      return resObj;
+      const { items } = resObj.tracks;
+      if (items.length === 0) {
+        return [];
+      } else {
+        return items.map((item) => {
+          const {
+            id,
+            name,
+            artists: [{ name: artistName }],
+            album: { name: albumName },
+            uri,
+          } = item;
+          return { id, name, artistName, albumName, uri };
+        });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -70,4 +83,4 @@ export const Spotify = {
 // Spotify.getAccessToken();
 // console.log(userAccessToken);
 
-// Spotify.search('red hot');
+Spotify.search('red hot');
