@@ -17,7 +17,6 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    Spotify.getAccessToken(); // TODO: handlesubmmit call this
     this.search('red');
   }
 
