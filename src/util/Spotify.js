@@ -59,6 +59,7 @@ export const Spotify = {
         }
       );
       const resObj = await response.json();
+      // resObj returns undefined when there is no userAccessToken
       const { items } = resObj.tracks;
       if (items.length === 0) {
         return [];

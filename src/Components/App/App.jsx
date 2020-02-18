@@ -13,13 +13,23 @@ export default class App extends Component {
     this.state = {
       searchResults: [],
     };
+    this.search = this.search.bind(this);
   }
 
-  // componentDidMount() {
-  //   Spotify.getAccessToken();
-  // }
+  componentDidMount() {
+    Spotify.getAccessToken(); // TODO: handlesubmmit call this
+    this.search('red');
+  }
+
+  async search(searchTerm) {
+    const searchResults = await Spotify.search(searchTerm);
+    this.setState({
+      searchResults,
+    });
+  }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <h1>
@@ -29,7 +39,7 @@ export default class App extends Component {
         </h1>
         <div className="App">
           <div className="App-playlist">
-            <SearchBar />
+            <SearchBar onSearch={this.search} />
             <SearchResult searchResults={this.state.searchResults} />
             <Playlist />
           </div>
