@@ -6,13 +6,14 @@ import queryString from 'query-string';
 
 // TODO: in an actual deploy, settings in spotify dev dashboard must be updated to redirect somewhere else besides localhost.
 
-
 const clientId = '8e119fa686284aab8c64d8d77a50ee3d';
 const redirectUri = 'http://localhost:3000/';
 
 let userAccessToken = '';
 
 export const Spotify = {
+  endpoint: 'https://api.spotify.com/v1',
+
   getAccessToken() {
     if (userAccessToken !== '') {
       return userAccessToken;
@@ -46,4 +47,27 @@ export const Spotify = {
       );
     }
   },
+
+  async search(searchInput) {
+    try {
+      const response = await fetch(
+        `${this.endpoint}/search?type=track&q=${searchInput}`,
+        {
+          headers: {
+            Authorization: `Bearer ${userAccessToken}`,
+          },
+        }
+      );
+      const resObj = await response.json();
+      console.log(resObj.tracks)
+      return resObj;
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
+
+// Spotify.getAccessToken();
+// console.log(userAccessToken);
+
+// Spotify.search('red hot');
