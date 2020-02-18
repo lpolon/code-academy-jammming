@@ -79,8 +79,3 @@ export const Spotify = {
     }
   },
 };
-
-// Spotify.getAccessToken();
-// console.log(userAccessToken);
-
-Spotify.search('red hot');

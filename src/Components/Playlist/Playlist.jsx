@@ -13,7 +13,7 @@ export default class Playlist extends Component {
       <div className="PlayList">
         <input defaultValue={'New Playlist'} />
         <TrackList />
-        <button cl assName="Playlist-save">
+        <button className="Playlist-save">
           SAVE TO SPOTIFY
         </button>
       </div>
