@@ -15,11 +15,11 @@ export default class SearchBar extends Component {
   }
 
   search() {
-    Spotify.getAccessToken();
     this.props.onSearch(this.state.term);
   }
 
   handleTermChange(event) {
+    Spotify.getAccessToken();
     const { value } = event.target;
     this.setState({
       term: value,

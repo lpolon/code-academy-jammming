@@ -15,9 +15,7 @@ export const Spotify = {
   endpoint: 'https://api.spotify.com/v1',
 
   getAccessToken() {
-    if (userAccessToken !== '') {
-      return userAccessToken;
-    }
+    if (userAccessToken) return;
 
     const {
       access_token: accessToken,
