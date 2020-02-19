@@ -15,7 +15,7 @@ export default class App extends Component {
     };
     this.search = this.search.bind(this);
   }
-
+  
   async search(searchTerm) {
     const searchResults = await Spotify.search(searchTerm);
     this.setState({
