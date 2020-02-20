@@ -1,4 +1,4 @@
-/* .Playlist {
+.Playlist {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,7 +33,7 @@
   font-size: .83rem;
   transition: background-color .25s;
   color: #fff;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .Playlist-save:hover {
@@ -49,4 +49,4 @@
   .Playlist {
     width: 90%;
   }
-} */
+}

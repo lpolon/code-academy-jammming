@@ -8,9 +8,10 @@ export default class Playlist extends Component {
     super(props);
     this.state = {};
   }
+
   render() {
     return (
-      <div className="PlayList">
+      <div className="Playlist">
         <input defaultValue={'New Playlist'} />
         <TrackList />
         <button className="Playlist-save">
