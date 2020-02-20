@@ -1,8 +1,8 @@
-/* body, */
-/* html, */
-/* #root { */
-  /* height: 100%; */
-/* } */
+body,
+html,
+#root {
+  height: 100%;
+}
 
 html {
   font-size: 18px;
@@ -27,7 +27,7 @@ h2 {
 }
 
 .App {
-  /* height: 100%; */
+  height: 100%;
   padding: 0 17% 10%;
   background-image: url('./background_photo_desktop.jpg');
   background-size: cover;
@@ -38,11 +38,11 @@ h2 {
   color: white;
 }
 
-/* .App-playlist {
+.App-playlist {
   display: flex;
   justify-content: space-between;
   width: 100%;
-} */
+}
 
 @media only screen and (max-width: 1020px) {
   .App-playlist {

@@ -15,7 +15,7 @@ export default class App extends Component {
     };
     this.search = this.search.bind(this);
   }
-  
+
   async search(searchTerm) {
     const searchResults = await Spotify.search(searchTerm);
     this.setState({
@@ -32,8 +32,8 @@ export default class App extends Component {
           ing
         </h1>
         <div className="App">
+          <SearchBar onSearch={this.search} />
           <div className="App-playlist">
-            <SearchBar onSearch={this.search} />
             <SearchResult searchResults={this.state.searchResults} />
             <Playlist />
           </div>
