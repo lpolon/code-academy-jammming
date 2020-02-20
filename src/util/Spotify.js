@@ -21,19 +21,14 @@ export const Spotify = {
       access_token: accessToken,
       expires_in: expiresIn,
     } = queryString.parse(window.location.hash);
-
-    console.log(accessToken);
-    console.log(expiresIn);
     if (
       typeof accessToken !== 'undefined' &&
       typeof expiresIn !== 'undefined'
     ) {
       userAccessToken = accessToken;
-      // set the access token to expire at the value for expiration time. Query strings returns seconds.
       window.setTimeout(() => {
         userAccessToken = '';
       }, expiresIn * 1000);
-      // wipe params from URL, so the app doesn't try grabbing the access token after it has expired
       window.history.pushState('Access Token', null, '/');
 
       return userAccessToken;
@@ -57,7 +52,7 @@ export const Spotify = {
         }
       );
       const resObj = await response.json();
-      // resObj returns undefined when there is no userAccessToken
+      // TODO: resObj returns undefined when there is no userAccessToken
       const { items } = resObj.tracks;
       if (items.length === 0) {
         return [];

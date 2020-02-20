@@ -7,10 +7,10 @@
   box-shadow: 0 4px 2px 2px black;
 }
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 0px;
   background: transparent;
-} */
+}
 
 @media only screen and (max-width: 1020px) {
   .SearchResults {
