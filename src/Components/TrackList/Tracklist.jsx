@@ -3,10 +3,10 @@ import './Tracklist.css';
 
 import Track from '../Track/Track';
 
-export default function Tracklist({ searchResults = [] }) {
+export default function Tracklist({ tracks = [] }) {
   return (
     <div className="TrackList">
-      {searchResults.map((trackInfo) => {
+      {tracks.map((trackInfo) => {
         const { id, ...rest } = trackInfo;
         return <Track key={id} {...rest} />;
       })}
