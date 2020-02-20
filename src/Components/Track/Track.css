@@ -1,7 +1,7 @@
 .Track {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(256, 256, 256, 0.8);
+  border-bottom: 1px solid hsla(0, 0%, 100%, .8);
 }
 
 .Track-action {
@@ -20,7 +20,7 @@
 
 .Track-information {
   display: flex;
-  /* flex-grow: 1; */
+  flex-grow: 1;
   flex-direction: column;
   height: 72px;
   justify-content: center;

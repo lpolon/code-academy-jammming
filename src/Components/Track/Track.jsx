@@ -8,13 +8,14 @@ export default function Track({ name = '', artistName = '', albumName = '' }) {
   // };
 
   return (
-    <div className="track">
+    <div className="Track">
       <div className="Track-information">
         <h3>{name}</h3>
         <p>
           {artistName} | {albumName}
         </p>
       </div>
+      <button className="Track-action">+</button>
       {/* {renderAction()} */}
     </div>
   );
