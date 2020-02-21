@@ -12,7 +12,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       searchResults: [],
-      playlistName: 'New Playlist',
+      playlistName: '',
       playlistTracks: [],
     };
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
@@ -30,7 +30,6 @@ export default class App extends Component {
   }
 
   updatePlaylistName(playlistName) {
-    console.log('recebendo valor do event?', playlistName);
     this.setState({
       playlistName,
     });
@@ -50,8 +49,14 @@ export default class App extends Component {
   }
 
   savePlaylist() {
+    const playlistName =
+      this.state.playlistName === '' ? 'New Playlist' : this.state.playlistName;
     const trackURIs = this.state.playlistTracks.map((track) => track.uri); // "spotify:track:78kar2tZk7655xZMibzXO3"
-    Spotify.savePlaylist(this.state.playlistName, trackURIs);
+    Spotify.savePlaylist(playlistName, trackURIs);
+    this.setState({
+      playlistName: '',
+      playlistTracks: [],
+    });
   }
 
   removeTrack(track) {

@@ -72,4 +72,56 @@ export const Spotify = {
       console.log(error);
     }
   },
+
+  async savePlaylist(playlistName, playlistUriArr) {
+    if (
+      typeof playlistName === 'undefined' ||
+      playlistName === '' ||
+      playlistUriArr.length === 0
+    )
+      return;
+    try {
+      const response = await fetch(`${this.endpoint}/me`, {
+        headers: {
+          Authorization: `Bearer ${userAccessToken}`,
+        },
+      });
+      const userProfile = await response.json();
+
+      console.log('userprofile ok:', userProfile.id);
+
+      // create playlist:
+      const response2 = await fetch(
+        `${this.endpoint}/users/${userProfile.id}/playlists`,
+        {
+          method: 'POST',
+          body: JSON.stringify({ name: playlistName }),
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userAccessToken}`,
+          },
+        }
+      );
+      const newPlaylist = await response2.json();
+
+      const response3 = await fetch(
+        `${this.endpoint}/users/${userProfile.id}/playlists/${newPlaylist.id}/tracks`,
+        {
+          method: 'POST',
+          body: JSON.stringify({ uris: playlistUriArr }),
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${userAccessToken}`,
+          },
+        }
+      );
+      const updatedPlaylist = await response3.json();
+      console.log('success!', updatedPlaylist);
+    } catch (error) {
+      console.log(error);
+    }
+
+    // TODO: New playlist link
+    // https://open.spotify.com/playlist/ URI
+  },
 };
