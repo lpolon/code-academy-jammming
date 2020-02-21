@@ -1,22 +1,24 @@
 import React from 'react';
 import './Track.css';
 
-export default function Track({ name = '', artistName = '', albumName = '' }) {
-  // const renderAction = () => {
-  //   const { isRemoval } = props;
-  //   return <button className="Track-action">{isRemoval ? '-' : '+'}</button>;
-  // };
-
+export default function Track({ track, onAdd, onRemove, isRemoval }) {
   return (
     <div className="Track">
       <div className="Track-information">
-        <h3>{name}</h3>
+        <h3>{track.name}</h3>
         <p>
-          {artistName} | {albumName}
+          {track.artistName} | {track.albumName}
         </p>
       </div>
-      <button className="Track-action">+</button>
-      {/* {renderAction()} */}
+      {isRemoval ? (
+        <button onClick={() => onRemove(track)} className="Track-action">
+          -
+        </button>
+      ) : (
+        <button onClick={() => onAdd(track)} className="Track-action">
+          +
+        </button>
+      )}
     </div>
   );
 }
