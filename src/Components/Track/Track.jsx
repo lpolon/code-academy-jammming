@@ -3,7 +3,7 @@ import './Track.css';
 
 export default function Track({ track, onAdd, onRemove, isRemoval }) {
   return (
-    <div className="Track">
+    <div className="Track" key={track.id}>
       <div className="Track-information">
         <h3>{track.name}</h3>
         <p>

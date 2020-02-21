@@ -13,16 +13,12 @@ export default class App extends Component {
     this.state = {
       searchResults: [],
       playlistName: 'hardcoded Name test',
-      playlistTracks: [
-        {
-          name: 'toxicity',
-          artistName: 'sistema fodão',
-          albumName: 'toxicity',
-        },
-      ],
+      playlistTracks: [],
     };
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
     this.search = this.search.bind(this);
+    this.addTrack = this.addTrack.bind(this);
+    this.removeTrack = this.removeTrack.bind(this);
   }
 
   async search(searchTerm) {
@@ -38,6 +34,33 @@ export default class App extends Component {
     });
   }
 
+  addTrack(track) {
+    const { id } = track;
+    const isTrackIncluded = (id) =>
+      typeof this.state.playlistTracks.find((track) => track.id === id) !==
+      'undefined'
+        ? true
+        : false;
+    if (isTrackIncluded(id)) return;
+    this.setState({
+      playlistTracks: [...this.state.playlistTracks, track],
+    });
+  }
+
+  removeTrack(track) {
+    const { id } = track;
+    const foundTrackIndex = this.state.playlistTracks.findIndex(
+      (track) => track.id === id
+    );
+    if (foundTrackIndex === -1) return;
+
+    const playlistCopy = [...this.state.playlistTracks];
+    playlistCopy.splice(foundTrackIndex, 1);
+    this.setState({
+      playlistTracks: playlistCopy,
+    });
+  }
+
   render() {
     return (
       <div>
@@ -49,8 +72,12 @@ export default class App extends Component {
         <div className="App">
           <SearchBar onSearch={this.search} />
           <div className="App-playlist">
-            <SearchResult searchResults={this.state.searchResults} />
+            <SearchResult
+              onAdd={this.addTrack}
+              searchResults={this.state.searchResults}
+            />
             <Playlist
+              onRemove={this.removeTrack}
               playlistName={this.state.playlistName}
               playlistTracks={this.state.playlistTracks}
               onNameChange={this.updatePlaylistName}
