@@ -12,13 +12,14 @@ export default class App extends Component {
     super(props);
     this.state = {
       searchResults: [],
-      playlistName: 'hardcoded Name test',
+      playlistName: 'New Playlist',
       playlistTracks: [],
     };
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
     this.search = this.search.bind(this);
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
+    this.savePlaylist = this.savePlaylist.bind(this);
   }
 
   async search(searchTerm) {
@@ -29,6 +30,7 @@ export default class App extends Component {
   }
 
   updatePlaylistName(playlistName) {
+    console.log('recebendo valor do event?', playlistName);
     this.setState({
       playlistName,
     });
@@ -45,6 +47,11 @@ export default class App extends Component {
     this.setState({
       playlistTracks: [...this.state.playlistTracks, track],
     });
+  }
+
+  savePlaylist() {
+    const trackURIs = this.state.playlistTracks.map((track) => track.uri); // "spotify:track:78kar2tZk7655xZMibzXO3"
+    Spotify.savePlaylist(this.state.playlistName, trackURIs);
   }
 
   removeTrack(track) {
@@ -77,8 +84,8 @@ export default class App extends Component {
               searchResults={this.state.searchResults}
             />
             <Playlist
+              onSave={this.savePlaylist}
               onRemove={this.removeTrack}
-              playlistName={this.state.playlistName}
               playlistTracks={this.state.playlistTracks}
               onNameChange={this.updatePlaylistName}
             />

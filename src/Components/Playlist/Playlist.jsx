@@ -3,38 +3,24 @@ import './Playlist.css';
 
 import TrackList from '../TrackList/Tracklist';
 
-export default class Playlist extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      playListName: '',
-    };
-    this.handleNameChange = this.handleNameChange.bind(this);
-  }
-
-  handleNameChange(event) {
-    const { value: playListName } = event.target;
-    this.setState({
-      playListName,
-    });
-  }
-
-  render() {
-    return (
-      <div className="Playlist">
-        <input
-          onChange={this.handleNameChange}
-          defaultValue={
-            this.state.playListName ? this.state.playListName : 'New Playlist'
-          }
-        />
-        <TrackList
-          tracks={this.props.playlistTracks}
-          onRemove={this.props.onRemove}
-          isRemoval
-        />
-        <button className="Playlist-save">SAVE TO SPOTIFY</button>
-      </div>
-    );
-  }
+export default function Playlist({
+  onSave,
+  onRemove,
+  playlistTracks,
+  onNameChange,
+}) {
+  return (
+    <div className="Playlist">
+      <input
+        onChange={({ target: { value } }) => {
+          onNameChange(value);
+        }}
+        placeholder="New Playlist"
+      />
+      <TrackList tracks={playlistTracks} onRemove={onRemove} isRemoval />
+      <button onClick={onSave} className="Playlist-save">
+        SAVE TO SPOTIFY
+      </button>
+    </div>
+  );
 }
