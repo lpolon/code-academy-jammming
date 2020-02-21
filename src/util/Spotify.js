@@ -7,7 +7,7 @@ import queryString from 'query-string';
 // TODO: in an actual deploy, settings in spotify dev dashboard must be updated to redirect somewhere else besides localhost.
 
 const clientId = '8e119fa686284aab8c64d8d77a50ee3d';
-const redirectUri = 'http://localhost:3000/';
+const redirectUri = 'http://polon-spotify-playlist.surge.sh/';
 
 let userAccessToken = '';
 
